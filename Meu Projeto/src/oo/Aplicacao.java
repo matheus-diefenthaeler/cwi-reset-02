@@ -2,7 +2,7 @@ package oo;
 
 import org.w3c.dom.ls.LSOutput;
 
-public class aplicacao {
+public class Aplicacao {
 
     public static void main(String[] args) {
 
