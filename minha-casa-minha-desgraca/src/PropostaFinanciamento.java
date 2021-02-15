@@ -12,12 +12,12 @@ public class PropostaFinanciamento {
 
 
     private void imprimirPropostaAprovada(){
-        System.out.println("Parabéns! " + this.beneficiario.getNome() + " Seu " + this.imovel.apresentacao() + " Será financiado em " + this.prazo + " meses");
+        System.out.println("Parabéns! " + this.beneficiario.getNome() + " Seu " + this.imovel.apresentacao() + "\n Será financiado em " + this.prazo + " meses!!!");
     }
 
     private void imprimirPropostaNegada(){
         System.out.println("Pelo amor... " + this.beneficiario.getNome() + ", por acaso esqueceu quanto tu ganha ? " + "o " +
-                this.imovel.apresentacao() + "\n Não pode ser financiado em " + this.prazo + "mês(es)");
+                this.imovel.apresentacao() + "\n Não pode ser financiado em " + this.prazo + " mês(es)!!!");
 
     }
 
