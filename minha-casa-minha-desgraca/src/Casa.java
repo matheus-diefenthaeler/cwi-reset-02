@@ -1,42 +1,27 @@
 public class Casa extends Imovel{
-    private Double valor;
-    private Endereco endereco;
-    private boolean patio;
 
+    private Patio patio;
 
-    public Casa(Double valor, Endereco endereco, boolean patio) {
-        this.valor = valor;
-        this.endereco = endereco;
+    public Casa(Double valor, Endereco endereco) {
+        super(endereco, valor);
+    }
+
+    public Casa(Double valor, Endereco endereco, Patio patio) {
+        super(endereco, valor);
         this.patio = patio;
     }
 
-
-    @Override
-    public Endereco getEndereco() {
-        return this.endereco;
-    }
-
-    @Override
-    public Double getValor() {
-        return this.valor;
-    }
-
-    public String possuiPatio(boolean patio) {
-        if(this.patio){
-            return " Casa COM patio!";
-        }else{
-           return " Casa SEM patio!";
-        }
+    public boolean hasPatio(){
+      return patio != null;
     }
 
     @Override
     public String apresentacao(){
-        return this.endereco.descricaoEndereco() + possuiPatio(this.patio) + " saindo no valor de: R$" + this.getValor();
+        String patio = "";
+        if(hasPatio()){
+            patio = this.patio.getPatioInfo();
+        }
+        return getEndereco().descricaoEndereco2() + patio + "\nTudo isso pelo valor de R$ " + getValor() + "!!";
     }
-
-
-
-
-
 
 }

@@ -3,10 +3,18 @@ public abstract class Imovel{
     private Double valor;
 
 
-    public abstract Endereco getEndereco();
+    public Imovel(Endereco endereco, Double valor) {
+        this.endereco = endereco;
+        this.valor = valor;
+    }
 
+    public Endereco getEndereco(){
+        return endereco;
+    }
 
-    public abstract Double getValor();
+    public Double getValor(){
+        return valor;
+    }
 
 
     public abstract String apresentacao();

@@ -1,12 +1,9 @@
 public class Apartamento extends Imovel{
 
-        private Double valor;
-        private Endereco endereco;
-        private Integer andar;
+    private Integer andar;
 
     public Apartamento(Double valor, Endereco endereco, Integer andar) {
-        this.valor = valor;
-        this.endereco = endereco;
+        super(endereco,valor);
         this.andar = andar;
     }
 
@@ -15,18 +12,8 @@ public class Apartamento extends Imovel{
     }
 
     @Override
-        public Endereco getEndereco() {
-            return this.endereco;
-        }
-
-        @Override
-        public Double getValor() {
-            return this.valor;
-        }
-
-        @Override
-        public String apresentacao() {
-            return this.endereco.descricaoEndereco() + " Apartamento no ANDAR numero " +this.getAndar() + " Com o valor de: R$" + this.getValor();
-        }
+    public String apresentacao() {
+        return getEndereco().descricaoEndereco2() + "\nApartamento no andar numero " + getAndar() + "\nEsse belo apê está saindo pelo valor de: R$" + getValor();
+    }
 
 }

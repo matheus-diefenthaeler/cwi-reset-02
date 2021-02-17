@@ -19,14 +19,16 @@ public class MinhaCasaMinhaDesgraca {
          * NÃO MODIFICAR ESTA CLASSE ANTES DESTA LINHA.
          */
 
-        opcoesParaFinanciamento.registrarImovel(new Casa(70000.00,new Endereco("Av dois corregos",1001,
-                "---","Piracicamirim","Piracicaba",UnidadeFederativa.SAO_PAULO),true));
+
+
+        opcoesParaFinanciamento.registrarImovel(new Casa(250000.00,new Endereco("Av dois corregos",1001,
+                "Sem","Piracicamirim","Piracicaba",UnidadeFederativa.SAO_PAULO),new Patio(true,50.00)));
 
         opcoesParaFinanciamento.registrarImovel(new Apartamento(150000.00, new Endereco("Rua dos Papagaios",
-                59,"-","Centro","Vila Velha", UnidadeFederativa.ESPIRITO_SANTO),3));
+                59,"Sem","Centro","Vila Velha", UnidadeFederativa.ESPIRITO_SANTO),3));
 
-        opcoesParaFinanciamento.registrarImovel(new Casa(90000.00, new Endereco("Av Jose Pinhedo",
-                250,"-","Vila Rosa","Niterói", UnidadeFederativa.RIO_DE_JANEIRO),false));
+        opcoesParaFinanciamento.registrarImovel(new Casa(130000.00, new Endereco("Av Jose Pinhedo",
+                250,"Sem","Vila Rosa","Niterói", UnidadeFederativa.RIO_DE_JANEIRO)));
 
 
 
