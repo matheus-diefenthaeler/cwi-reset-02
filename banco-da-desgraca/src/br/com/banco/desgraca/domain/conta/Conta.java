@@ -1,8 +1,11 @@
 package br.com.banco.desgraca.domain.conta;
+
 import br.com.banco.desgraca.domain.InstituicaoBancaria;
 
-public abstract class Conta implements ContaBancaria{
-    private Conta conta;
+import java.time.LocalDate;
+
+public abstract class Conta implements ContaBancaria {
+
     protected Integer numeroConta;
     protected InstituicaoBancaria instituicaoBancaria;
     protected Double saldo;
@@ -14,12 +17,8 @@ public abstract class Conta implements ContaBancaria{
         this.saldo = 0.0;
     }
 
-     public Integer getNumeroConta() {
+    public Integer getNumeroConta() {
         return numeroConta;
-    }
-
-    public Conta getConta(){
-        return conta;
     }
 
     @Override
@@ -27,9 +26,6 @@ public abstract class Conta implements ContaBancaria{
         return instituicaoBancaria;
     }
 
-    public Double getSaldo() {
-        return saldo;
-    }
 
     @Override
     public void sacar(Double valor) {
@@ -43,7 +39,7 @@ public abstract class Conta implements ContaBancaria{
 
     @Override
     public Double consultarSaldo() {
-        return null;
+        return this.saldo;
     }
 
     @Override
@@ -53,10 +49,14 @@ public abstract class Conta implements ContaBancaria{
     }
 
     @Override
-    public String toString() {
-        return "Conta " + getInstituicaoBancaria() + " " + this.numeroConta;
+    public void exibirExtrato(LocalDate inicio, LocalDate fim) {
+
     }
 
+    @Override
+    public String toString() {
+        return "Conta " + getInstituicaoBancaria().getBanco() + " " + this.numeroConta;
+    }
 
 
 }

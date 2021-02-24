@@ -5,32 +5,54 @@ import br.com.banco.desgraca.exception.ContaException;
 
 import java.time.LocalDate;
 
-public class ContaPoupanca extends Conta{
-
-
+public class ContaPoupanca extends Conta {
 
     public ContaPoupanca(Integer numeroConta, InstituicaoBancaria instituicaoBancaria) throws ContaException {
-        super(numeroConta,instituicaoBancaria);
-        if(!isAllowedBank(instituicaoBancaria)){
+        super(numeroConta, instituicaoBancaria);
+        if (!isAllowedBank(instituicaoBancaria)) {
             throw new ContaException("Não é possui criar uma conta poupanca no banco " + instituicaoBancaria.getBanco());
         }
-
     }
 
     @Override
     public void sacar(Double valor) {
+        if (valor >= 50) {
+            saldo -= (valor * 0.02);
+            this.saldo -= valor;
+        } else try {
+            throw new ContaException("Nao foi realizar o saque, somente valores acima de R$ 50,00");
+        } catch (ContaException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void transferir(Double valor, ContaBancaria contaDestino) {
+        super.transferir(valor, contaDestino);
+        if (isDifferentBank(contaDestino.getInstituicaoBancaria())) {
+            saldo -= (valor * 0.01);
+        } else {
+            saldo -= (valor * 0.005);
+        }
     }
 
     @Override
     public void exibirExtrato(LocalDate inicio, LocalDate fim) {
     }
 
-
     private Boolean isAllowedBank(InstituicaoBancaria instituicaoBancaria) {
         return switch (instituicaoBancaria) {
             case NUBANK -> false;
             default -> true;
         };
-
     }
+
+    private Boolean isDifferentBank(InstituicaoBancaria instituicaoBancaria) {
+        if (this.instituicaoBancaria != instituicaoBancaria) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
