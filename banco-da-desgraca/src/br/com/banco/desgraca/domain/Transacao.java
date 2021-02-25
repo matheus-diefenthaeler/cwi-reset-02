@@ -1,43 +1,29 @@
 package br.com.banco.desgraca.domain;
 
-import br.com.banco.desgraca.domain.conta.Conta;
-import br.com.banco.desgraca.domain.conta.ContaBancaria;
-
+import java.text.DecimalFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
-public class Transacao implements ContaBancaria {
+public class Transacao {
 
-    private TipoTransacao tipoTransacao;
-    private ContaBancaria contaOrigem;
-    private ContaBancaria contaDestino;
+    private final TipoTransacao tipoTransacao;
+    private final Double valor;
+    private final LocalDate data;
 
-    @Override
-    public InstituicaoBancaria getInstituicaoBancaria() {
-        return null;
+    public Transacao(TipoTransacao tipoTransacao, Double valor, LocalDate data) {
+        this.tipoTransacao = tipoTransacao;
+        this.valor = valor;
+        this.data = data;
     }
 
-    @Override
-    public Double consultarSaldo() {
-        return this.consultarSaldo();
+    public LocalDate getData(){
+        return data;
     }
 
-    @Override
-    public void depositar(Double valor) {
-
+    public String getDetails(){
+        return tipoTransacao.getTipoDeTransacao() + " " + DecimalFormat.getCurrencyInstance(new Locale("pt","BR")).format(valor)
+                + " " + data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
 
-    @Override
-    public void sacar(Double valor) {
-
-    }
-
-    @Override
-    public void transferir(Double valor, ContaBancaria contaDestino) {
-
-    }
-
-    @Override
-    public void exibirExtrato(LocalDate inicio, LocalDate fim) {
-
-    }
 }

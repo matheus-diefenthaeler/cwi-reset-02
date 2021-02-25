@@ -2,10 +2,10 @@ package br.com.banco.desgraca.domain;
 
 public enum TipoTransacao {
 
-    ENTRADA("Transação de Entrada"),
-    SAIDA("Trasação de saída");
+    ENTRADA("+"),
+    SAIDA("-");
 
-    private String tipoDeTransacao;
+    private final String tipoDeTransacao;
 
     TipoTransacao(String tipoDeTransacao) {
         this.tipoDeTransacao = tipoDeTransacao;

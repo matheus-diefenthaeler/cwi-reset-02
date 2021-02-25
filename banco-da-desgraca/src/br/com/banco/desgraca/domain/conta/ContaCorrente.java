@@ -2,13 +2,9 @@ package br.com.banco.desgraca.domain.conta;
 
 import br.com.banco.desgraca.domain.InstituicaoBancaria;
 import br.com.banco.desgraca.exception.ContaException;
-
 import java.time.LocalDate;
 
 public class ContaCorrente extends Conta {
-
-    private Integer numeroConta;
-    private InstituicaoBancaria instituicaoBancaria;
 
     public ContaCorrente(Integer numeroConta, InstituicaoBancaria instituicaoBancaria) {
         super(numeroConta, instituicaoBancaria);
@@ -17,7 +13,7 @@ public class ContaCorrente extends Conta {
     @Override
     public void sacar(Double valor) {
         if (valor % 5 == 0) {
-            this.saldo -= valor;
+            super.sacar(valor);
         } else try {
             throw new ContaException("Só são permitido saques com valores múltiplos de R$ 5,00");
         } catch (ContaException e) {
@@ -35,14 +31,12 @@ public class ContaCorrente extends Conta {
 
     @Override
     public void exibirExtrato(LocalDate inicio, LocalDate fim) {
+        super.exibirExtrato(inicio, fim);
     }
 
-    private Boolean isDifferentBank(InstituicaoBancaria instituicaoBancaria) {
-        if (this.instituicaoBancaria != instituicaoBancaria) {
-            return true;
-        } else {
-            return false;
-        }
+    @Override
+    public String toString() {
+        return "Conta Corrente " + instituicaoBancaria.getBanco() + " " + numeroConta;
     }
 
 }

@@ -3,8 +3,6 @@ package br.com.banco.desgraca.domain.conta;
 import br.com.banco.desgraca.domain.InstituicaoBancaria;
 import br.com.banco.desgraca.exception.ContaException;
 
-import java.time.LocalDate;
-
 public class ContaPoupanca extends Conta {
 
     public ContaPoupanca(Integer numeroConta, InstituicaoBancaria instituicaoBancaria) throws ContaException {
@@ -18,7 +16,7 @@ public class ContaPoupanca extends Conta {
     public void sacar(Double valor) {
         if (valor >= 50) {
             saldo -= (valor * 0.02);
-            this.saldo -= valor;
+            super.sacar(valor);
         } else try {
             throw new ContaException("Nao foi realizar o saque, somente valores acima de R$ 50,00");
         } catch (ContaException e) {
@@ -36,10 +34,6 @@ public class ContaPoupanca extends Conta {
         }
     }
 
-    @Override
-    public void exibirExtrato(LocalDate inicio, LocalDate fim) {
-    }
-
     private Boolean isAllowedBank(InstituicaoBancaria instituicaoBancaria) {
         return switch (instituicaoBancaria) {
             case NUBANK -> false;
@@ -47,12 +41,9 @@ public class ContaPoupanca extends Conta {
         };
     }
 
-    private Boolean isDifferentBank(InstituicaoBancaria instituicaoBancaria) {
-        if (this.instituicaoBancaria != instituicaoBancaria) {
-            return true;
-        } else {
-            return false;
-        }
+    @Override
+    public String toString() {
+        return "Conta Poupança " + instituicaoBancaria.getBanco() + " " + numeroConta;
     }
 
 }

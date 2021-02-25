@@ -8,8 +8,7 @@ public enum InstituicaoBancaria {
     ITAU("Itau"),
     NUBANK("Nubank");
 
-
-    private String banco;
+    private final String banco;
 
     InstituicaoBancaria(String banco) {
         this.banco = banco;
@@ -18,7 +17,6 @@ public enum InstituicaoBancaria {
     public String getBanco() {
         return banco;
     }
-
 
 }
 
