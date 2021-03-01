@@ -1,6 +1,5 @@
 package br.com.cwi.resetflix.repository;
 
-import br.com.cwi.resetflix.entity.AtorEntity;
 import br.com.cwi.resetflix.entity.DiretorEntity;
 import org.springframework.stereotype.Repository;
 
@@ -13,7 +12,7 @@ public class DiretoresRepository {
     static List<DiretorEntity> diretores = new ArrayList<>();
     static Long contadorIds = 1l;
 
-    public List<DiretorEntity> getAtores(){
+    public List<DiretorEntity> getDiretores(){
         return diretores;
     }
 
@@ -39,7 +38,5 @@ public class DiretoresRepository {
         return null;
     }
 
-    public List<DiretorEntity> getDiretores() {
-        return diretores;
-    }
+
 }

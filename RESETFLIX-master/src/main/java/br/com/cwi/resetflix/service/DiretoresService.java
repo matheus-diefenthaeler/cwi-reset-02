@@ -46,6 +46,4 @@ public class DiretoresService {
         return MAPPER_DETALHES_DIRETOR.mapear(diretorSalvo,filmesDiretor);
     }
 
-
-
 }
